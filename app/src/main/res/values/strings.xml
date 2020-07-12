@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ANDORI</string>
+    <string name="label_enable">Enable</string>
 </resources>
