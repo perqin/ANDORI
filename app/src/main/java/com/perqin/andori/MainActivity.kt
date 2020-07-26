@@ -1,8 +1,10 @@
 package com.perqin.andori
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.perqin.andori.ui.pages.station.StationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 FloatingService.stop(this)
             }
+        }
+
+        devFab.setOnClickListener {
+            startActivity(Intent(this, StationActivity::class.java))
         }
     }
 }

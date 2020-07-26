@@ -7,4 +7,8 @@
         <item name="colorAccent">@color/teal200</item>
     </style>
 
+    <style name="Theme.App.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
