@@ -14,6 +14,7 @@ import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.perqin.andori.data.BandoriStationService
 import com.perqin.andori.ui.notification.NOTIFICATION_CHANNEL_ID_FLOATING
 import com.perqin.andori.ui.notification.NOTIFICATION_ID_FLOATING
 import com.perqin.andori.ui.pages.station.StationActivity
@@ -22,6 +23,8 @@ import com.perqin.andori.ui.shortcuts.SHORTCUT_ID_FLOATING
 import com.perqin.andori.ui.shortcuts.rinkoPerson
 
 class FloatingService : Service() {
+    private val bandoriStationService = BandoriStationService
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val ret = super.onStartCommand(intent, flags, startId)
         val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID_FLOATING)
@@ -36,17 +39,20 @@ class FloatingService : Service() {
             .setBubbleMetadata(NotificationCompat.BubbleMetadata.Builder()
                 .setIcon(IconCompat.createWithResource(this, R.mipmap.ic_launcher_round))
                 .setSuppressNotification(true)
+                .setDesiredHeight(800)
                 .setIntent(PendingIntent.getActivity(this, 0,
                     Intent(this, StationActivity::class.java), 0))
                 .build())
             .build()
         NotificationManagerCompat.from(this).notify(NOTIFICATION_ID_FLOATING, notification)
+        bandoriStationService.startConnection()
         return ret
     }
 
     override fun onDestroy() {
         super.onDestroy()
         NotificationManagerCompat.from(this).cancel(NOTIFICATION_ID_FLOATING)
+        bandoriStationService.stopConnection()
     }
 
     override fun onBind(p0: Intent?): IBinder? {
