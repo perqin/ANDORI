@@ -16,6 +16,7 @@
         <activity
             android:name=".ui.pages.station.StationActivity"
             android:allowEmbedded="true"
+            android:documentLaunchMode="always"
             android:resizeableActivity="true"
             tools:targetApi="n" />
         <activity android:name=".MainActivity">
