@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
+import com.perqin.andori.ui.notification.NOTIFICATION_CHANNEL_ID_FLOATING
 
 class App : Application() {
     override fun onCreate() {
@@ -18,7 +19,11 @@ class App : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannels() {
         NotificationManagerCompat.from(this).createNotificationChannels(listOf(
-            NotificationChannel("floating", "Floating bubbles", NotificationManager.IMPORTANCE_DEFAULT)
+            NotificationChannel(
+                NOTIFICATION_CHANNEL_ID_FLOATING,
+                getString(R.string.label_floatingBubbles),
+                NotificationManager.IMPORTANCE_DEFAULT,
+            )
         ))
     }
 }

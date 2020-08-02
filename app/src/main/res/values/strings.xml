@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ANDORI</string>
     <string name="label_enable">Enable</string>
+    <string name="label_floatingBubbles">Floating bubbles</string>
+    <string name="label_gotoStation">Go to station</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
